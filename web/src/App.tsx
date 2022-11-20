@@ -6,15 +6,28 @@ import Routes from 'src/Routes'
 
 import './scaffold.css'
 import './index.css'
+import { ColorModeContext, useMode } from './theme'
 
-const App = () => (
-  <FatalErrorBoundary page={FatalErrorPage}>
-    <RedwoodProvider titleTemplate="%PageTitle | %AppTitle">
-      <RedwoodApolloProvider>
-        <Routes />
-      </RedwoodApolloProvider>
-    </RedwoodProvider>
-  </FatalErrorBoundary>
-)
+import { CssBaseline, ThemeProvider } from '@mui/material'
+
+function App() {
+  const [theme, colorMode] = useMode()
+
+  return (
+    <ColorModeContext.Provider value={colorMode}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline>
+          <FatalErrorBoundary page={FatalErrorPage}>
+            <RedwoodProvider titleTemplate="%PageTitle | %AppTitle">
+              <RedwoodApolloProvider>
+                <Routes />
+              </RedwoodApolloProvider>
+            </RedwoodProvider>
+          </FatalErrorBoundary>
+        </CssBaseline>
+      </ThemeProvider>
+    </ColorModeContext.Provider>
+  )
+}
 
 export default App

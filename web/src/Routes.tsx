@@ -29,7 +29,9 @@ const Routes = () => {
         <Route path="/" page={HomePage} name="home" />
       </Set>
       <Route notfound page={NotFoundPage} />
-      <Set wrap={DashboardLayout}></Set>
+      <Set wrap={DashboardLayout}>
+        <Route path="/dashboard" page={DashboardPage} name="dashboard" />
+      </Set>
     </Router>
   )
 }

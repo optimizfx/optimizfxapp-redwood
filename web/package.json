@@ -13,8 +13,12 @@
     ]
   },
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
     "@headlessui/react": "^1.7.4",
+    "@mui/icons-material": "^5.10.14",
     "@mui/material": "^5.10.14",
+    "@mui/x-data-grid": "^5.17.12",
     "@redwoodjs/forms": "3.4.0",
     "@redwoodjs/router": "3.4.0",
     "@redwoodjs/web": "3.4.0",
