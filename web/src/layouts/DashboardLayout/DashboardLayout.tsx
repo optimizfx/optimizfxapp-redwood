@@ -8,9 +8,11 @@ type DashboardLayoutProps = {
 const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   return (
     <>
-      <Topbar />
-      <Sidebar />
-      <main className="content">{children}</main>
+      <main className="content">
+        <Sidebar />
+        <Topbar />
+        {children}
+      </main>
     </>
   )
 }

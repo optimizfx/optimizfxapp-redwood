@@ -1,3 +1,5 @@
+import { CssBaseline, ThemeProvider } from '@mui/material'
+
 import { FatalErrorBoundary, RedwoodProvider } from '@redwoodjs/web'
 import { RedwoodApolloProvider } from '@redwoodjs/web/apollo'
 
@@ -7,8 +9,6 @@ import Routes from 'src/Routes'
 import './scaffold.css'
 import './index.css'
 import { ColorModeContext, useMode } from './theme'
-
-import { CssBaseline, ThemeProvider } from '@mui/material'
 
 function App() {
   const [theme, colorMode] = useMode()
