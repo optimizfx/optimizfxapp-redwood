@@ -24117,6 +24117,7 @@ __metadata:
     "@mui/icons-material": ^5.10.14
     "@mui/material": ^5.10.14
     "@mui/x-data-grid": ^5.17.12
+    "@redwoodjs/auth": 3.4.0
     "@redwoodjs/forms": 3.4.0
     "@redwoodjs/router": 3.4.0
     "@redwoodjs/web": 3.4.0

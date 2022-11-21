@@ -1,3 +1,6 @@
+import { Grid } from '@mui/material'
+import Grid2 from '@mui/material/Unstable_Grid2' // Grid version 2
+
 import Sidebar from 'src/components/Sidebar/Sidebar'
 import Topbar from 'src/components/Topbar/Topbar'
 
@@ -7,13 +10,14 @@ type DashboardLayoutProps = {
 
 const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   return (
-    <>
+    <div className="app">
+      <Sidebar />
+
       <main className="content">
-        <Sidebar />
         <Topbar />
         {children}
       </main>
-    </>
+    </div>
   )
 }
 

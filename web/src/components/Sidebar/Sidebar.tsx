@@ -10,19 +10,21 @@ import ReciptsOutlinedIcon from '@mui/icons-material/ReciptsOutlined'
 import { Box, IconButton, Typography, useTheme } from '@mui/material'
 import { fontWeight } from '@mui/system'
 import userImg from 'public/img/user.png'
-import { Menu, MenuItem, ProSidebar } from 'react-pro-sidebar'
+import { Menu, MenuItem, ProSidebar, SidebarFooter } from 'react-pro-sidebar'
 
 import { Link } from '@redwoodjs/router'
 
 import { tokens } from 'src/theme'
-import 'react-pro-sidebar/dist/css/styles.css'
+
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
   return (
     <MenuItem
       active={selected === title}
-      style={{ color: colors.grey[100] }}
+      style={{
+        color: colors.grey[100],
+      }}
       onClick={() => setSelected(title)}
       icon={icon}
     >
@@ -37,6 +39,7 @@ const Sidebar = () => {
   const colors = tokens(theme.palette.mode)
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [selected, setSelected] = useState('Dashboard')
+
   return (
     <Box
       sx={{
@@ -121,6 +124,7 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
+
             <Typography
               variant="h6"
               color={colors.grey[300]}
@@ -128,9 +132,10 @@ const Sidebar = () => {
             >
               Data
             </Typography>
+
             <Item
               title="Manage Team"
-              to="/people"
+              to="/team"
               icon={<PeopleOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
@@ -158,6 +163,19 @@ const Sidebar = () => {
             />
           </Box>
         </Menu>
+        {/* Footer */}
+        <SidebarFooter style={{ textAlign: 'center' }}>
+          <div className="sidebar-btn-wrapper" style={{ padding: '16px' }}>
+            <Link
+              className="sidebar-btn"
+              style={{ cursor: 'pointer' }}
+              to="/profile"
+            >
+              <PersonOutlinedIcon />
+              <span>My Account</span>
+            </Link>
+          </div>
+        </SidebarFooter>
       </ProSidebar>
     </Box>
   )

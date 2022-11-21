@@ -1,3 +1,5 @@
+import { AuthProvider } from '@redwoodjs/auth'
+
 import { CssBaseline, ThemeProvider } from '@mui/material'
 
 import { FatalErrorBoundary, RedwoodProvider } from '@redwoodjs/web'
@@ -19,9 +21,11 @@ function App() {
         <CssBaseline>
           <FatalErrorBoundary page={FatalErrorPage}>
             <RedwoodProvider titleTemplate="%PageTitle | %AppTitle">
-              <RedwoodApolloProvider>
-                <Routes />
-              </RedwoodApolloProvider>
+              <AuthProvider type="dbAuth">
+                <RedwoodApolloProvider>
+                  <Routes />
+                </RedwoodApolloProvider>
+              </AuthProvider>
             </RedwoodProvider>
           </FatalErrorBoundary>
         </CssBaseline>
