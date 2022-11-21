@@ -6,9 +6,7 @@ import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined'
 import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined'
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined'
-import ReciptsOutlinedIcon from '@mui/icons-material/ReciptsOutlined'
 import { Box, IconButton, Typography, useTheme } from '@mui/material'
-import { fontWeight } from '@mui/system'
 import userImg from 'public/img/user.png'
 import { Menu, MenuItem, ProSidebar, SidebarFooter } from 'react-pro-sidebar'
 
@@ -79,7 +77,7 @@ const Sidebar = () => {
                 ml="15px"
               >
                 <Typography variant="h3" color={colors.grey[100]}>
-                  ADMINOIS
+                  BOT IT
                 </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />
@@ -126,9 +124,9 @@ const Sidebar = () => {
             />
 
             <Typography
-              variant="h6"
+              variant="h5"
               color={colors.grey[300]}
-              sx={{ m: '15px 0 5px 20px' }}
+              sx={{ m: '15px 0 5px 25px' }}
             >
               Data
             </Typography>

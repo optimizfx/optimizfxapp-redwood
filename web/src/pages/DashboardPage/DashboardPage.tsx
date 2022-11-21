@@ -3,7 +3,7 @@ import { MetaTags } from '@redwoodjs/web'
 
 const DashboardPage = () => {
   return (
-    <>
+    <div className="p-5">
       <MetaTags title="Dashboard" description="Dashboard page" />
 
       <h1>DashboardPage</h1>
@@ -14,7 +14,7 @@ const DashboardPage = () => {
         My default route is named <code>dashboard</code>, link to me with `
         <Link to={routes.dashboard()}>Dashboard</Link>`
       </p>
-    </>
+    </div>
   )
 }
 
