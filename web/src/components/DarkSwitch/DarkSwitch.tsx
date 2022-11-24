@@ -1,11 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 
-import { useTheme } from 'next-themes'
+// import { useTheme } from 'next-themes'
+import { Box, IconButton, useTheme } from '@mui/material'
+
+import { ColorModeContext, tokens } from 'src/theme'
 
 const ThemeChanger = () => {
   const [mounted, setMounted] = useState(false)
-  const { theme, setTheme } = useTheme()
-
+  // const { theme, setTheme } = useTheme()
+  const colorMode = useContext(ColorModeContext)
+  const theme = useTheme()
+  const colors = tokens(theme.palette.mode)
   // When mounted on client, now we can show the UI
   useEffect(() => setMounted(true), [])
 
@@ -16,13 +21,13 @@ const ThemeChanger = () => {
       {theme === 'dark' ? (
         <button
           onClick={() => setTheme('light')}
-          className="text-gray-300 rounded-full outline-none focus:outline-none"
+          className="rounded-full text-gray-300 outline-none focus:outline-none"
         >
           <span className="sr-only">Light Mode</span>
 
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="w-5 h-5"
+            className="h-5 w-5"
             viewBox="0 0 20 20"
             fill="currentColor"
           >
@@ -31,8 +36,8 @@ const ThemeChanger = () => {
         </button>
       ) : (
         <button
-          onClick={() => setTheme('dark')}
-          className="text-gray-500 rounded-full outline-none focus:outline-none focus-visible:ring focus-visible:ring-gray-100 focus:ring-opacity-20"
+          onClick={colorMode.toggleColorMode}
+          className="rounded-full text-gray-500 outline-none focus:outline-none focus:ring-opacity-20 focus-visible:ring focus-visible:ring-gray-100"
         >
           <span className="sr-only">Dark Mode</span>
           <svg

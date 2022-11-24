@@ -1,5 +1,5 @@
 datasource db {
-  provider = "sqlite"
+  provider = "postgres"
   url      = env("DATABASE_URL")
 }
 
@@ -13,6 +13,19 @@ model Post {
   title     String
   body      String
   createdAt DateTime @default(now())
+}
+
+model Robot {
+  id          Int      @id @default(autoincrement())
+  title       String?
+  description String
+  pairs       String
+  timeframe   String
+  image       String
+  files       String
+  published   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model User {

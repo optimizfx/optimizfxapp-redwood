@@ -3,7 +3,7 @@ import { Disclosure } from '@headlessui/react'
 import { useAuth } from '@redwoodjs/auth'
 import { Link, routes } from '@redwoodjs/router'
 
-import ThemeChanger from 'src/components/DarkSwitch'
+// import ThemeChanger from 'src/components/DarkSwitch'
 
 export default function Header() {
   const navigation = ['Product', 'Features', 'Pricing', 'Company', 'Blog']
@@ -16,19 +16,17 @@ export default function Header() {
           {({ open }) => (
             <>
               <div className="flex w-full flex-wrap items-center justify-between lg:w-auto">
-                <Link href="/">
-                  <a className="flex items-center space-x-2 text-2xl font-medium text-indigo-500 dark:text-gray-100">
-                    <span>
-                      <img
-                        src="/img/logo.svg"
-                        alt="N"
-                        width="32"
-                        height="32"
-                        className="w-8"
-                      />
-                    </span>
-                    <span>BotIt</span>
-                  </a>
+                <Link to="/">
+                  <span>
+                    <img
+                      src="/img/logo.svg"
+                      alt="N"
+                      width="32"
+                      height="32"
+                      className="w-8"
+                    />
+                  </span>
+                  <span>BotIt</span>
                 </Link>
 
                 <Disclosure.Button
@@ -109,7 +107,7 @@ export default function Header() {
           ) : (
             <Link to={routes.login()}>Login</Link>
           )}
-          <ThemeChanger />
+          {/* <ThemeChanger /> */}
         </div>
       </nav>
     </div>
