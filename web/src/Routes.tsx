@@ -17,12 +17,6 @@ import LandingLayout from './layouts/LandingLayout/LandingLayout'
 const Routes = () => {
   return (
     <Router>
-      <Set wrap={ScaffoldLayout} title="Robots" titleTo="robots" buttonLabel="New Robot" buttonTo="newRobot">
-        <Route path="/robots/new" page={RobotNewRobotPage} name="newRobot" />
-        <Route path="/robots/{id:Int}/edit" page={RobotEditRobotPage} name="editRobot" />
-        <Route path="/robots/{id:Int}" page={RobotRobotPage} name="robot" />
-        <Route path="/robots" page={RobotRobotsPage} name="robots" />
-      </Set>
       <Route path="/login" page={LoginPage} name="login" />
       <Route path="/signup" page={SignupPage} name="signup" />
       <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
@@ -33,6 +27,12 @@ const Routes = () => {
           <Route path="/admin/posts/{id:Int}/edit" page={PostEditPostPage} name="editPost" />
           <Route path="/admin/posts/{id:Int}" page={PostPostPage} name="post" />
           <Route path="/admin/posts" page={PostPostsPage} name="posts" />
+        </Set>
+        <Set wrap={ScaffoldLayout} title="Robots" titleTo="robots" buttonLabel="New Robot" buttonTo="newRobot">
+          <Route path="/robots/new" page={RobotNewRobotPage} name="newRobot" />
+          <Route path="/robots/{id:Int}/edit" page={RobotEditRobotPage} name="editRobot" />
+          <Route path="/robots/{id:Int}" page={RobotRobotPage} name="robot" />
+          <Route path="/robots" page={RobotRobotsPage} name="robots" />
         </Set>
       </Private>
       <Set wrap={LandingLayout}>

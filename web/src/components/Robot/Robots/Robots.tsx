@@ -1,11 +1,11 @@
+import type { DeleteRobotMutationVariables, FindRobots } from 'types/graphql'
+
 import { Link, routes } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
 import { QUERY } from 'src/components/Robot/RobotsCell'
 import { checkboxInputTag, timeTag, truncate } from 'src/lib/formatters'
-
-import type { DeleteRobotMutationVariables, FindRobots } from 'types/graphql'
 
 const DELETE_ROBOT_MUTATION = gql`
   mutation DeleteRobotMutation($id: Int!) {
