@@ -3978,7 +3978,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@popperjs/core@npm:^2.11.6, @popperjs/core@npm:^2.4.0":
+"@popperjs/core@npm:^2.11.6, @popperjs/core@npm:^2.4.0, @popperjs/core@npm:^2.9.2":
   version: 2.11.6
   resolution: "@popperjs/core@npm:2.11.6"
   checksum: 90b1361ab1a19cd351e482a88cb6cf13cf25973e20797bf9b97223e64b87bde8d9668ab2f33be24475e2a092d362ac256c361b16ea4e4ab5b21f2aeaef5f9bb7
@@ -10928,7 +10928,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"date-fns@npm:^2.29.1":
+"date-fns@npm:^2.24.0, date-fns@npm:^2.29.1":
   version: 2.29.3
   resolution: "date-fns@npm:2.29.3"
   checksum: aa9128c876ef69a05988029d6aa3d7e5c47a1e978f18b77b48126683d1a2e6605a16c3f5293ca9f4ca790d0755b5061fcea5b469f097871cd53f6590a5c1adc4
@@ -19969,7 +19969,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:15.8.1, prop-types@npm:^15.0.0, prop-types@npm:^15.6.1, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
+"prop-types@npm:15.8.1, prop-types@npm:^15.0.0, prop-types@npm:^15.5.7, prop-types@npm:^15.6.1, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -20249,6 +20249,35 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-apexcharts@npm:1.3.9":
+  version: 1.3.9
+  resolution: "react-apexcharts@npm:1.3.9"
+  dependencies:
+    prop-types: ^15.5.7
+  peerDependencies:
+    apexcharts: ^3.18.0
+    react: ">=0.13"
+  checksum: da851a3e0f7705a3f0059d12d643d3c434eca40d39e8594ce2481f82d64f8b88533d4a4a48bceea95bbeeb37522ed70376f3ea163efad90e5e0db0aefbcb5d55
+  languageName: node
+  linkType: hard
+
+"react-datepicker@npm:4.5.0":
+  version: 4.5.0
+  resolution: "react-datepicker@npm:4.5.0"
+  dependencies:
+    "@popperjs/core": ^2.9.2
+    classnames: ^2.2.6
+    date-fns: ^2.24.0
+    prop-types: ^15.7.2
+    react-onclickoutside: ^6.12.0
+    react-popper: ^2.2.5
+  peerDependencies:
+    react: ^16.9.0 || ^17
+    react-dom: ^16.9.0 || ^17
+  checksum: 9dbbb4a32ad7bc89c7ddfb4c947f24cb353443bf4abeb3c47e21cb79d73a013df705dc34ba292644b8462d3d66c99b60aeba6258512131a765e08b7ad19fb491
+  languageName: node
+  linkType: hard
+
 "react-docgen-typescript@npm:^2.1.1":
   version: 2.2.2
   resolution: "react-docgen-typescript@npm:2.2.2"
@@ -20316,7 +20345,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-fast-compare@npm:^3.2.0":
+"react-fast-compare@npm:^3.0.1, react-fast-compare@npm:^3.2.0":
   version: 3.2.0
   resolution: "react-fast-compare@npm:3.2.0"
   checksum: 2a7d75ce9fb5da1e3c01f74a5cd592f3369a8cc8d44e93654bf147ab221f430238e8be70677e896f2bfcb96a1cb7a47a8d05d84633de764a9d57d27005a4bb9e
@@ -20394,6 +20423,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-onclickoutside@npm:^6.12.0":
+  version: 6.12.2
+  resolution: "react-onclickoutside@npm:6.12.2"
+  peerDependencies:
+    react: ^15.5.x || ^16.x || ^17.x || ^18.x
+    react-dom: ^15.5.x || ^16.x || ^17.x || ^18.x
+  checksum: 2a87ef9e41777698d7ca215786115893ecdbae184064044370fc72a8526f841ae709068a9abedc79633c159900a400c8424196170ece18f362c47a9bb12ecf90
+  languageName: node
+  linkType: hard
+
 "react-perfect-scrollbar@npm:^1.5.8":
   version: 1.5.8
   resolution: "react-perfect-scrollbar@npm:1.5.8"
@@ -20404,6 +20443,20 @@ __metadata:
     react: ">=16.3.3"
     react-dom: ">=16.3.3"
   checksum: 4f2b79eb1c09ff3ce24bc7c2174ae531b2850a6c7408759e9129a1b98e53b5d18df237f7dff6d71dbf7990b35b9769489b8b93cc51c05302b2d81b7cbfb29b94
+  languageName: node
+  linkType: hard
+
+"react-popper@npm:^2.2.5":
+  version: 2.3.0
+  resolution: "react-popper@npm:2.3.0"
+  dependencies:
+    react-fast-compare: ^3.0.1
+    warning: ^4.0.2
+  peerDependencies:
+    "@popperjs/core": ^2.0.0
+    react: ^16.8.0 || ^17 || ^18
+    react-dom: ^16.8.0 || ^17 || ^18
+  checksum: 23f93540537ca4c035425bb8d5e51b11131fbc921d7ac1d041d0ae557feac8c877f3a012d36b94df8787803f52ed81e6df9257ac9e58719875f7805518d6db3f
   languageName: node
   linkType: hard
 
@@ -24080,6 +24133,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"warning@npm:^4.0.2":
+  version: 4.0.3
+  resolution: "warning@npm:4.0.3"
+  dependencies:
+    loose-envify: ^1.0.0
+  checksum: aebab445129f3e104c271f1637fa38e55eb25f968593e3825bd2f7a12bd58dc3738bb70dc8ec85826621d80b4acfed5a29ebc9da17397c6125864d72301b937e
+  languageName: node
+  linkType: hard
+
 "watchpack-chokidar2@npm:^2.0.1":
   version: 2.0.1
   resolution: "watchpack-chokidar2@npm:2.0.1"
@@ -24191,6 +24253,8 @@ __metadata:
     postcss-loader: ^7.0.1
     prop-types: 15.8.1
     react: 17.0.2
+    react-apexcharts: 1.3.9
+    react-datepicker: 4.5.0
     react-dom: 17.0.2
     react-perfect-scrollbar: ^1.5.8
     react-pro-sidebar: 0.7.1
