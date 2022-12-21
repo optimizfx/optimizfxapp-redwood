@@ -9,11 +9,11 @@ import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined'
 import { Box, IconButton, Typography, useTheme } from '@mui/material'
 import userImg from 'public/img/user.png'
 import { Menu, MenuItem, ProSidebar, SidebarFooter } from 'react-pro-sidebar'
+import sidebarBg from 'web/public/img/sidebar-background.jpg'
 
 import { Link } from '@redwoodjs/router'
 
 import { tokens } from 'src/theme'
-
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
@@ -58,7 +58,7 @@ const Sidebar = () => {
         },
       }}
     >
-      <ProSidebar collapsed={isCollapsed}>
+      <ProSidebar collapsed={isCollapsed} image={sidebarBg}>
         <Menu iconShape="square">
           {/* LOGO AND MENU ICON */}
           <MenuItem
