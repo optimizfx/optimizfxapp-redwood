@@ -1,7 +1,7 @@
 import { Link, routes } from '@redwoodjs/router'
 
 import Footer from 'src/components/Footer'
-import Header from 'src/components/Header'
+import { HeaderMegaMenu } from 'src/components/Frontpage/Navbar'
 
 type LandingLayoutProps = {
   children?: React.ReactNode
@@ -10,7 +10,7 @@ type LandingLayoutProps = {
 const LandingLayout = ({ children }: LandingLayoutProps) => {
   return (
     <>
-      <Header />
+      <HeaderMegaMenu />
       <main>{children}</main>
       <Footer />
     </>

@@ -12,7 +12,7 @@ import { Private, Router, Route, Set } from '@redwoodjs/router'
 import ScaffoldLayout from 'src/layouts/ScaffoldLayout'
 
 import DashboardLayout from './layouts/DashboardLayout/DashboardLayout'
-import DashboardV2Layout from './layouts/DashboardV2Layout/DashboardV2Layout'
+import DashboardV2Layout from './layouts/DashboardLayout/DashboardLayout'
 import LandingLayout from './layouts/LandingLayout/LandingLayout'
 const Routes = () => {
   return (

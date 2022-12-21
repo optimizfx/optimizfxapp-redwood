@@ -1,44 +1,86 @@
-export default () => (
-  <main>
-    <style
-      dangerouslySetInnerHTML={{
-        __html: `
-              html, body {
-                margin: 0;
-              }
-              html * {
-                box-sizing: border-box;
-              }
-              main {
-                display: flex;
-                align-items: center;
-                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-                text-align: center;
-                background-color: #E2E8F0;
-                height: 100vh;
-              }
-              section {
-                background-color: white;
-                border-radius: 0.25rem;
-                width: 32rem;
-                padding: 1rem;
-                margin: 0 auto;
-                box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-              }
-              h1 {
-                font-size: 2rem;
-                margin: 0;
-                font-weight: 500;
-                line-height: 1;
-                color: #2D3748;
-              }
-            `,
-      }}
-    />
-    <section>
-      <h1>
-        <span>404 Page Not Found</span>
-      </h1>
-    </section>
-  </main>
-)
+import {
+  createStyles,
+  Container,
+  Title,
+  Text,
+  Button,
+  Group,
+} from '@mantine/core'
+
+import { Illustration } from './Illustration'
+
+const useStyles = createStyles((theme) => ({
+  root: {
+    paddingTop: 80,
+    paddingBottom: 80,
+  },
+
+  inner: {
+    position: 'relative',
+  },
+
+  image: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    left: 0,
+    zIndex: 0,
+    opacity: 0.75,
+  },
+
+  content: {
+    paddingTop: 220,
+    position: 'relative',
+    zIndex: 1,
+
+    [theme.fn.smallerThan('sm')]: {
+      paddingTop: 120,
+    },
+  },
+
+  title: {
+    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+    textAlign: 'center',
+    fontWeight: 900,
+    fontSize: 38,
+
+    [theme.fn.smallerThan('sm')]: {
+      fontSize: 32,
+    },
+  },
+
+  description: {
+    maxWidth: 540,
+    margin: 'auto',
+    marginTop: theme.spacing.xl,
+    marginBottom: theme.spacing.xl * 1.5,
+  },
+}))
+
+export function NothingFoundBackground() {
+  const { classes } = useStyles()
+
+  return (
+    <Container className={classes.root}>
+      <div className={classes.inner}>
+        <Illustration className={classes.image} />
+        <div className={classes.content}>
+          <Title className={classes.title}>Nothing to see here</Title>
+          <Text
+            color="dimmed"
+            size="lg"
+            align="center"
+            className={classes.description}
+          >
+            Page you are trying to open does not exist. You may have mistyped
+            the address, or the page has been moved to another URL. If you think
+            this is an error contact support.
+          </Text>
+          <Group position="center">
+            <Button size="md">Take me back to home page</Button>
+          </Group>
+        </div>
+      </div>
+    </Container>
+  )
+}

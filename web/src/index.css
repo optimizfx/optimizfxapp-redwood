@@ -29,12 +29,7 @@
    position: relative;
 
  }
- .app .pro-sidebar-footer {
-  margin-top: auto
- }
- .pro-sidebar .pro-menu.shaped .pro-menu-item > .pro-inner-item > .pro-icon-wrapper {
-  background-color: inherit;
- }
+
  ::-webkit-scrollbar {
    width: 10px;
  }
