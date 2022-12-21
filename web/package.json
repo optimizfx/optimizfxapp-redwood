@@ -13,9 +13,9 @@
     ]
   },
   "dependencies": {
-    "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@headlessui/react": "^1.7.4",
+    "@mantine/nprogress": "^5.9.4",
     "@mui/icons-material": "^5.10.14",
     "@mui/material": "^5.10.14",
     "@mui/x-data-grid": "^5.17.12",
@@ -23,6 +23,7 @@
     "@redwoodjs/forms": "3.4.0",
     "@redwoodjs/router": "3.4.0",
     "@redwoodjs/web": "3.4.0",
+    "@tabler/icons": "^1.116.1",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "humanize-string": "2.1.0",
     "mdi-material-ui": "^7.6.0",
@@ -36,6 +37,9 @@
     "react-pro-sidebar": "0.7.1"
   },
   "devDependencies": {
+    "@emotion/react": "^11.10.5",
+    "@mantine/core": "^5.9.4",
+    "@mantine/hooks": "^5.9.4",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.19",
     "postcss-loader": "^7.0.1",

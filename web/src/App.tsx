@@ -1,7 +1,6 @@
-import { AuthProvider } from '@redwoodjs/auth'
-
 import { CssBaseline, ThemeProvider } from '@mui/material'
 
+import { AuthProvider } from '@redwoodjs/auth'
 import { FatalErrorBoundary, RedwoodProvider } from '@redwoodjs/web'
 import { RedwoodApolloProvider } from '@redwoodjs/web/apollo'
 
