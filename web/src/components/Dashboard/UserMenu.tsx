@@ -1,4 +1,11 @@
-import { Menu, Group, Text, Avatar, useMantineTheme, ActionIcon } from '@mantine/core';
+import {
+  Menu,
+  Group,
+  Text,
+  Avatar,
+  useMantineTheme,
+  ActionIcon,
+} from '@mantine/core'
 import {
   IconLogout,
   IconHeart,
@@ -10,10 +17,10 @@ import {
   IconSwitchHorizontal,
   IconChevronRight,
   IconDots,
-} from '@tabler/icons';
+} from '@tabler/icons'
 
 export function UserMenu() {
-  const theme = useMantineTheme();
+  const theme = useMantineTheme()
   return (
     <Group position="center">
       <Menu withArrow width={300} position="bottom" transition="pop">
@@ -41,22 +48,42 @@ export function UserMenu() {
 
           <Menu.Divider />
 
-          <Menu.Item icon={<IconHeart size={14} stroke={1.5} color={theme.colors.red[6]} />}>
+          <Menu.Item
+            icon={
+              <IconHeart size={14} stroke={1.5} color={theme.colors.red[6]} />
+            }
+          >
             Liked posts
           </Menu.Item>
-          <Menu.Item icon={<IconStar size={14} stroke={1.5} color={theme.colors.yellow[6]} />}>
+          <Menu.Item
+            icon={
+              <IconStar size={14} stroke={1.5} color={theme.colors.yellow[6]} />
+            }
+          >
             Saved posts
           </Menu.Item>
-          <Menu.Item icon={<IconMessage size={14} stroke={1.5} color={theme.colors.blue[6]} />}>
+          <Menu.Item
+            icon={
+              <IconMessage
+                size={14}
+                stroke={1.5}
+                color={theme.colors.blue[6]}
+              />
+            }
+          >
             Your comments
           </Menu.Item>
 
           <Menu.Label>Settings</Menu.Label>
-          <Menu.Item icon={<IconSettings size={14} stroke={1.5} />}>Account settings</Menu.Item>
+          <Menu.Item icon={<IconSettings size={14} stroke={1.5} />}>
+            Account settings
+          </Menu.Item>
           <Menu.Item icon={<IconSwitchHorizontal size={14} stroke={1.5} />}>
             Change account
           </Menu.Item>
-          <Menu.Item icon={<IconLogout size={14} stroke={1.5} />}>Logout</Menu.Item>
+          <Menu.Item icon={<IconLogout size={14} stroke={1.5} />}>
+            Logout
+          </Menu.Item>
 
           <Menu.Divider />
 
@@ -70,5 +97,5 @@ export function UserMenu() {
         </Menu.Dropdown>
       </Menu>
     </Group>
-  );
+  )
 }

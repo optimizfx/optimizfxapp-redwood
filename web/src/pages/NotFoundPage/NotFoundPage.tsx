@@ -57,7 +57,7 @@ const useStyles = createStyles((theme) => ({
   },
 }))
 
-export function NothingFoundBackground() {
+export function NotFoundPage() {
   const { classes } = useStyles()
 
   return (

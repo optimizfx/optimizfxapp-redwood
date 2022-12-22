@@ -27,7 +27,7 @@ import {
 import { Toaster } from '@redwoodjs/web/toast'
 
 import AppHeader from 'src/components/Dashboard/Header'
-import { Logo } from 'src/components/Dashboard/Logo'
+import { Logo } from 'src/components/Logo/Logo'
 import { Sidebar } from 'src/components/Dashboard/Sidebar'
 import { UserMenu } from 'src/components/Dashboard/UserMenu'
 

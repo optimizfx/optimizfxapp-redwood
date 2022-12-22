@@ -1,5 +1,6 @@
 import {
   createStyles,
+  ActionIcon,
   Header,
   HoverCard,
   Group,
@@ -16,9 +17,10 @@ import {
   Drawer,
   Collapse,
   ScrollArea,
+  ColorScheme,
 } from '@mantine/core'
-import { MantineLogo } from '@mantine/ds'
 import { useDisclosure } from '@mantine/hooks'
+import { useLocalStorage } from '@mantine/hooks'
 import {
   IconNotification,
   IconCode,
@@ -27,7 +29,13 @@ import {
   IconFingerprint,
   IconCoin,
   IconChevronDown,
+  IconSun,
+  IconMoonStars,
 } from '@tabler/icons'
+
+import { useAuth } from '@redwoodjs/auth'
+
+import { Logo } from '../Logo/Logo'
 
 const useStyles = createStyles((theme) => ({
   link: {
@@ -132,10 +140,21 @@ const mockdata = [
 ]
 
 export function HeaderMegaMenu() {
+  const { isAuthenticated } = useAuth()
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
     useDisclosure(false)
   const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false)
   const { classes, theme } = useStyles()
+
+  // Set color theme state and save to local storage
+  const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
+    key: 'mantine-color-scheme',
+    defaultValue: 'light',
+    getInitialValueInEffect: true,
+  })
+
+  const toggleColorScheme = (value?: ColorScheme) =>
+    setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'))
 
   const links = mockdata.map((item) => (
     <UnstyledButton className={classes.subLink} key={item.title}>
@@ -156,10 +175,10 @@ export function HeaderMegaMenu() {
   ))
 
   return (
-    <Box pb={120}>
+    <Box>
       <Header height={60} px="md">
         <Group position="apart" sx={{ height: '100%' }}>
-          <MantineLogo size={30} />
+          <Logo colorScheme={colorScheme} />
 
           <Group
             sx={{ height: '100%' }}
@@ -232,8 +251,35 @@ export function HeaderMegaMenu() {
           </Group>
 
           <Group className={classes.hiddenMobile}>
-            <Button variant="default">Log in</Button>
-            <Button>Sign up</Button>
+            <ActionIcon
+              variant="light"
+              onClick={() => toggleColorScheme()}
+              size={36}
+            >
+              {colorScheme === 'dark' ? (
+                <IconSun size={16} />
+              ) : (
+                <IconMoonStars size={16} />
+              )}
+            </ActionIcon>
+            {isAuthenticated ? (
+              <Button component="a" href="/dashboard" variant="default">
+                Dashboard
+              </Button>
+            ) : (
+              <Button component="a" href="/login" variant="filled">
+                Login
+              </Button>
+            )}
+            {isAuthenticated ? (
+              <Button component="a" href="/logout" variant="filled" color="red">
+                Logout
+              </Button>
+            ) : (
+              <Button component="a" href="/register" variant="default">
+                Sign up
+              </Button>
+            )}
           </Group>
 
           <Burger
@@ -284,8 +330,24 @@ export function HeaderMegaMenu() {
           />
 
           <Group position="center" grow pb="xl" px="md">
-            <Button variant="default">Log in</Button>
-            <Button>Sign up</Button>
+            {isAuthenticated ? (
+              <Button component="a" href="/dashboard" variant="default">
+                Dashboard
+              </Button>
+            ) : (
+              <Button component="a" href="/login" variant="filled">
+                Login
+              </Button>
+            )}
+            {isAuthenticated ? (
+              <Button component="a" href="/logout" variant="filled" color="red">
+                Logout
+              </Button>
+            ) : (
+              <Button component="a" href="/register" variant="default">
+                Sign up
+              </Button>
+            )}
           </Group>
         </ScrollArea>
       </Drawer>

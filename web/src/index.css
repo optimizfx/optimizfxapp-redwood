@@ -1,18 +1,4 @@
-/**
- * START --- SETUP TAILWINDCSS EDIT
- *
- * `yarn rw setup ui tailwindcss` placed these imports here
- * to inject Tailwind's styles into your CSS.
- * For more information, see: https://tailwindcss.com/docs/installation#include-tailwind-in-your-css
- */
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-/**
- * END --- SETUP TAILWINDCSS EDIT
- */
  @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap");
- @import url('react-pro-sidebar/dist/css/styles.css');
 
  html,
  body,
@@ -22,12 +8,6 @@
    height: 100%;
    width: 100%;
    font-family: "Source Sans Pro", sans-serif;
- }
-
- .app {
-   display: flex;
-   position: relative;
-
  }
 
  ::-webkit-scrollbar {

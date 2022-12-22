@@ -12,15 +12,19 @@ import { Private, Router, Route, Set } from '@redwoodjs/router'
 import ScaffoldLayout from 'src/layouts/ScaffoldLayout'
 
 import DashboardLayout from './layouts/DashboardLayout/DashboardLayout'
-import DashboardV2Layout from './layouts/DashboardLayout/DashboardLayout'
 import LandingLayout from './layouts/LandingLayout/LandingLayout'
 const Routes = () => {
   return (
     <Router>
-      <Route path="/login" page={LoginPage} name="login" />
-      <Route path="/signup" page={SignupPage} name="signup" />
-      <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
-      <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
+      <Set wrap={LandingLayout}>
+        <Route path="/login" page={LoginPage} name="login" />
+        <Route path="/signup" page={SignupPage} name="signup" />
+        <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
+        <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
+        <Route path="/article/{id:Int}" page={ArticlePage} name="article" />
+        <Route path="/about" page={AboutPage} name="about" />
+        <Route path="/" page={HomePage} name="home" />
+      </Set>
       <Private unauthenticated="login" roles="moderator, admin">
         <Set wrap={ScaffoldLayout} title="Posts" titleTo="posts" buttonLabel="New Post" buttonTo="newPost">
           <Route path="/admin/posts/new" page={PostNewPostPage} name="newPost" />
@@ -35,32 +39,23 @@ const Routes = () => {
           <Route path="/robots" page={RobotRobotsPage} name="robots" />
         </Set>
       </Private>
-      <Set wrap={LandingLayout}>
-        <Route path="/article/{id:Int}" page={ArticlePage} name="article" />
-        <Route path="/about" page={AboutPage} name="about" />
-        <Route path="/" page={HomePage} name="home" />
-      </Set>
-
-      {/* <Set wrap={DashboardLayout}>
-        <Route path="/dashboard" page={DashboardPage} name="dashboard" />
-      </Set> */}
 
       {/* no unauthenticated users can access the dashboard */}
-      <Private unauthenticated="login" roles="user, moderator, admin">
-        <Set wrap={DashboardV2Layout}>
-          <Route path="/dashboard" page={DashboardV2Page} name="dashboard" />
+      {/* <Private unauthenticated="home" roles="user, moderator, admin"> */}
+      <Set wrap={DashboardLayout}>
+        <Route path="/dashboard" page={DashboardPage} name="dashboard" />
 
-          {/* Only admins can manage users */}
-          <Private unauthenticated="login" roles="admin">
+        {/* Only admins can manage users */}
+        {/* <Private unauthenticated="login" roles="admin">
             <Set wrap={ScaffoldLayout} title="Users" titleTo="users" buttonLabel="New User" buttonTo="newUser">
               <Route path="/admin/users/new" page={UserNewUserPage} name="newUser" />
               <Route path="/admin/users/{id:Int}/edit" page={UserEditUserPage} name="editUser" />
               <Route path="/admin/users/{id:Int}" page={UserUserPage} name="user" />
               <Route path="/admin/users" page={UserUsersPage} name="users" />
             </Set>
-          </Private>
-        </Set>
-      </Private>
+          </Private> */}
+      </Set>
+      {/* </Private> */}
       <Route notfound page={NotFoundPage} />
     </Router>
   )

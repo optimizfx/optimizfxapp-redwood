@@ -1,10 +1,11 @@
 import { createStyles, Anchor, Group, ActionIcon } from '@mantine/core'
-import { MantineLogo } from '@mantine/ds'
 import {
   IconBrandTwitter,
   IconBrandYoutube,
   IconBrandInstagram,
 } from '@tabler/icons'
+
+import { Logo } from '../Logo/Logo'
 
 const useStyles = createStyles((theme) => ({
   footer: {
@@ -37,7 +38,7 @@ interface FooterCenteredProps {
   links: { link: string; label: string }[]
 }
 
-export function FooterCentered({ links }: FooterCenteredProps) {
+export function Footer({ links }: FooterCenteredProps) {
   const { classes } = useStyles()
   const items = links.map((link) => (
     <Anchor<'a'>
@@ -55,7 +56,7 @@ export function FooterCentered({ links }: FooterCenteredProps) {
   return (
     <div className={classes.footer}>
       <div className={classes.inner}>
-        <MantineLogo size={28} />
+        <Logo colorScheme="dark" />
 
         <Group className={classes.links}>{items}</Group>
 

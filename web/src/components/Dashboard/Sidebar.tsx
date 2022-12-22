@@ -14,6 +14,8 @@ import {
   IconLogout,
 } from '@tabler/icons'
 
+import { Logo } from '../Logo/Logo'
+
 const useStyles = createStyles((theme, _params, getRef) => {
   const icon = getRef('icon')
   return {
@@ -127,7 +129,7 @@ export function Sidebar() {
     <Navbar height="100%" width={{ sm: 300 }} p="md">
       <Navbar.Section grow>
         <Group className={classes.header} position="apart">
-          {/* <MantineLogo size={28} /> */}
+          <Logo colorScheme="dark" />
           <Avatar src="./public/img/cards/logo-aviato.png" size="md" />
           <Code sx={{ fontWeight: 700 }}>v1.0</Code>
         </Group>

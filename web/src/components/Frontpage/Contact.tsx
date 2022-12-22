@@ -83,7 +83,7 @@ const useStyles = createStyles((theme) => ({
 
 const social = [IconBrandTwitter, IconBrandYoutube, IconBrandInstagram]
 
-export function ContactUs() {
+export function Contact() {
   const { classes } = useStyles()
 
   const icons = social.map((Icon, index) => (
