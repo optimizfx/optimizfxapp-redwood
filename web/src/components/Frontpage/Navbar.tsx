@@ -140,7 +140,7 @@ const mockdata = [
 ]
 
 export function HeaderMegaMenu() {
-  const { isAuthenticated } = useAuth()
+  const { isAuthenticated, logOut } = useAuth()
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
     useDisclosure(false)
   const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false)
@@ -173,6 +173,10 @@ export function HeaderMegaMenu() {
       </Group>
     </UnstyledButton>
   ))
+
+  function logIn(): void {
+    throw new Error('Function not implemented.')
+  }
 
   return (
     <Box>
@@ -248,6 +252,9 @@ export function HeaderMegaMenu() {
             <a href="#" className={classes.link}>
               Academy
             </a>
+            <a href="/blog" className={classes.link}>
+              Blog
+            </a>
           </Group>
 
           <Group className={classes.hiddenMobile}>
@@ -267,16 +274,21 @@ export function HeaderMegaMenu() {
                 Dashboard
               </Button>
             ) : (
-              <Button component="a" href="/login" variant="filled">
+              <Button component="a" onClick={() => logIn()} variant="filled">
                 Login
               </Button>
             )}
             {isAuthenticated ? (
-              <Button component="a" href="/logout" variant="filled" color="red">
+              <Button
+                component="a"
+                onClick={() => logOut()}
+                variant="filled"
+                color="red"
+              >
                 Logout
               </Button>
             ) : (
-              <Button component="a" href="/register" variant="default">
+              <Button component="a" href="/signup" variant="default">
                 Sign up
               </Button>
             )}
@@ -323,6 +335,9 @@ export function HeaderMegaMenu() {
           <a href="#" className={classes.link}>
             Academy
           </a>
+          <a href="/blog" className={classes.link}>
+            Blog
+          </a>
 
           <Divider
             my="sm"
@@ -335,16 +350,21 @@ export function HeaderMegaMenu() {
                 Dashboard
               </Button>
             ) : (
-              <Button component="a" href="/login" variant="filled">
+              <Button component="a" onClick={() => logIn()} variant="filled">
                 Login
               </Button>
             )}
             {isAuthenticated ? (
-              <Button component="a" href="/logout" variant="filled" color="red">
+              <Button
+                component="a"
+                onClick={() => logOut()}
+                variant="filled"
+                color="red"
+              >
                 Logout
               </Button>
             ) : (
-              <Button component="a" href="/register" variant="default">
+              <Button component="a" href="/signup" variant="default">
                 Sign up
               </Button>
             )}

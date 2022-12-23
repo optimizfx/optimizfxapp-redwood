@@ -1,11 +1,6 @@
-import { useState } from 'react'
-
 import {
-  AppShell,
-  useMantineTheme,
-  MantineProvider,
-  ColorSchemeProvider,
   ColorScheme,
+  AppShell,
   Text,
   Navbar,
   Group,
@@ -14,7 +9,8 @@ import {
   UnstyledButton,
   ThemeIcon,
 } from '@mantine/core'
-import { useLocalStorage, useViewportSize } from '@mantine/hooks'
+import { useViewportSize } from '@mantine/hooks'
+import { useLocalStorage } from '@mantine/hooks'
 import {
   IconSun,
   IconMoonStars,
@@ -24,12 +20,8 @@ import {
   IconDatabase,
 } from '@tabler/icons'
 
-import { Toaster } from '@redwoodjs/web/toast'
-
-import AppHeader from 'src/components/Dashboard/Header'
-import { Logo } from 'src/components/Logo/Logo'
-import { Sidebar } from 'src/components/Dashboard/Sidebar'
 import { UserMenu } from 'src/components/Dashboard/UserMenu'
+import { Logo } from 'src/components/Logo/Logo'
 
 type DashboardV2LayoutProps = {
   children?: React.ReactNode
@@ -100,60 +92,49 @@ const DashboardV2Layout = ({ children }: DashboardV2LayoutProps) => {
   const { height } = useViewportSize()
 
   return (
-    <ColorSchemeProvider
-      colorScheme={colorScheme}
-      toggleColorScheme={toggleColorScheme}
+    <AppShell
+      padding="md"
+      fixed={false}
+      navbar={
+        <Navbar width={{ base: 300 }} height={height} p="xs">
+          <Navbar.Section grow mt="xs">
+            <MainLinks />
+          </Navbar.Section>
+          <Navbar.Section>{/* <User /> */}</Navbar.Section>
+        </Navbar>
+      }
+      header={
+        <Header height={60}>
+          <Group sx={{ height: '100%' }} px={20} position="apart">
+            <Logo colorScheme={colorScheme} />
+            <Group px={20}>
+              <UserMenu />
+              <ActionIcon
+                variant="default"
+                onClick={() => toggleColorScheme()}
+                size={30}
+              >
+                {colorScheme === 'dark' ? (
+                  <IconSun size={16} />
+                ) : (
+                  <IconMoonStars size={16} />
+                )}
+              </ActionIcon>
+            </Group>
+          </Group>
+        </Header>
+      }
+      styles={(theme) => ({
+        main: {
+          backgroundColor:
+            theme.colorScheme === 'dark'
+              ? theme.colors.dark[8]
+              : theme.colors.gray[0],
+        },
+      })}
     >
-      <MantineProvider
-        theme={{ colorScheme }}
-        withGlobalStyles
-        withNormalizeCSS
-      >
-        <AppShell
-          padding="md"
-          fixed={false}
-          navbar={
-            <Navbar width={{ base: 300 }} height={height} p="xs">
-              <Navbar.Section grow mt="xs">
-                <MainLinks />
-              </Navbar.Section>
-              <Navbar.Section>{/* <User /> */}</Navbar.Section>
-            </Navbar>
-          }
-          header={
-            <Header height={60}>
-              <Group sx={{ height: '100%' }} px={20} position="apart">
-                <Logo colorScheme={colorScheme} />
-                <Group px={20}>
-                  <UserMenu />
-                  <ActionIcon
-                    variant="default"
-                    onClick={() => toggleColorScheme()}
-                    size={30}
-                  >
-                    {colorScheme === 'dark' ? (
-                      <IconSun size={16} />
-                    ) : (
-                      <IconMoonStars size={16} />
-                    )}
-                  </ActionIcon>
-                </Group>
-              </Group>
-            </Header>
-          }
-          styles={(theme) => ({
-            main: {
-              backgroundColor:
-                theme.colorScheme === 'dark'
-                  ? theme.colors.dark[8]
-                  : theme.colors.gray[0],
-            },
-          })}
-        >
-          {children}
-        </AppShell>
-      </MantineProvider>
-    </ColorSchemeProvider>
+      {children}
+    </AppShell>
   )
 }
 

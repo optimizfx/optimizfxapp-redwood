@@ -57,7 +57,7 @@ const useStyles = createStyles((theme) => ({
   },
 }))
 
-export function NotFoundPage() {
+const NotFoundPage = () => {
   const { classes } = useStyles()
 
   return (
@@ -84,3 +84,4 @@ export function NotFoundPage() {
     </Container>
   )
 }
+export default NotFoundPage

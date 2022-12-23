@@ -14,6 +14,8 @@ import {
   IconLogout,
 } from '@tabler/icons'
 
+import { login, CurrentUser } from '@redwoodjs/auth'
+
 import { Logo } from '../Logo/Logo'
 
 const useStyles = createStyles((theme, _params, getRef) => {
@@ -129,7 +131,7 @@ export function Sidebar() {
     <Navbar height="100%" width={{ sm: 300 }} p="md">
       <Navbar.Section grow>
         <Group className={classes.header} position="apart">
-          <Logo colorScheme="dark" />
+          <Logo size={20} />
           <Avatar src="./public/img/cards/logo-aviato.png" size="md" />
           <Code sx={{ fontWeight: 700 }}>v1.0</Code>
         </Group>
@@ -146,11 +148,7 @@ export function Sidebar() {
           <span>Change account</span>
         </a>
 
-        <a
-          href="#"
-          className={classes.link}
-          onClick={(event) => event.preventDefault()}
-        >
+        <a href="#" className={classes.link} onClick={logout()}>
           <IconLogout className={classes.linkIcon} stroke={1.5} />
           <span>Logout</span>
         </a>
