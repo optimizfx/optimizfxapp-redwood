@@ -29,7 +29,7 @@ const Routes = () => {
         <Route path="/about" page={AboutPage} name="about" />
         <Route path="/" page={HomePage} name="home" />
       </Set>
-      <Private unauthenticated="login" roles="moderator, admin">
+      <Private unauthenticated="login">
         <Set wrap={ScaffoldLayout} title="Posts" titleTo="posts" buttonLabel="New Post" buttonTo="newPost">
           <Route path="/admin/posts/new" page={PostNewPostPage} name="newPost" />
           <Route path="/admin/posts/{id:Int}/edit" page={PostEditPostPage} name="editPost" />
@@ -48,6 +48,14 @@ const Routes = () => {
       {/* <Private unauthenticated="home" roles="user, moderator, admin"> */}
       <Set wrap={DashboardLayout}>
         <Route path="/dashboard" page={DashboardPage} name="dashboard" />
+        <Route path="/dashboard/account" page={AccountPage} name="account" />
+
+        <Set wrap={ScaffoldLayout} title="Users" titleTo="users" buttonLabel="New User" buttonTo="newUser">
+          <Route path="/admin/users/new" page={UserNewUserPage} name="newUser" />
+          <Route path="/admin/users/{id:Int}/edit" page={UserEditUserPage} name="editUser" />
+          <Route path="/admin/users/{id:Int}" page={UserUserPage} name="user" />
+          <Route path="/admin/users" page={UserUsersPage} name="users" />
+        </Set>
 
         {/* Only admins can manage users */}
         {/* <Private unauthenticated="login" roles="admin">

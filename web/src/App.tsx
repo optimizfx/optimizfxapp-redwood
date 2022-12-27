@@ -13,7 +13,6 @@ import { Toaster } from '@redwoodjs/web/toast'
 
 import FatalErrorPage from 'src/pages/FatalErrorPage'
 import Routes from 'src/Routes'
-
 import './scaffold.css'
 import './index.css'
 
@@ -32,31 +31,27 @@ function App() {
     process.env.SUPABASE_URL,
     process.env.SUPABASE_KEY
   )
-
   return (
     <FatalErrorBoundary page={FatalErrorPage}>
-      <RedwoodProvider titleTemplate="%PageTitle | %AppTitle">
-        <AuthProvider client={supabaseClient} type="supabase">
-          <RedwoodApolloProvider>
-            <ColorSchemeProvider
-              colorScheme={colorScheme}
-              toggleColorScheme={toggleColorScheme}
-            >
-              <MantineProvider
-                theme={{ colorScheme }}
-                withGlobalStyles
-                withNormalizeCSS
-              >
-                <Toaster
-                  toastOptions={{ className: 'rw-toast', duration: 6000 }}
-                />
-
+      <ColorSchemeProvider
+        colorScheme={colorScheme}
+        toggleColorScheme={toggleColorScheme}
+      >
+        <MantineProvider
+          theme={{ colorScheme }}
+          withGlobalStyles
+          withNormalizeCSS
+        >
+          <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
+          <RedwoodProvider titleTemplate="%PageTitle | %AppTitle">
+            <AuthProvider client={supabaseClient} type="supabase">
+              <RedwoodApolloProvider>
                 <Routes />
-              </MantineProvider>
-            </ColorSchemeProvider>
-          </RedwoodApolloProvider>
-        </AuthProvider>
-      </RedwoodProvider>
+              </RedwoodApolloProvider>
+            </AuthProvider>
+          </RedwoodProvider>
+        </MantineProvider>
+      </ColorSchemeProvider>
     </FatalErrorBoundary>
   )
 }

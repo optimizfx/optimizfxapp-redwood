@@ -19,8 +19,11 @@ import {
   IconDots,
 } from '@tabler/icons'
 
+import { useAuth } from '@redwoodjs/auth'
 export function UserMenu() {
   const theme = useMantineTheme()
+  const { logOut } = useAuth()
+
   return (
     <Group position="center">
       <Menu withArrow width={300} position="bottom" transition="pop">
@@ -38,9 +41,9 @@ export function UserMenu() {
               />
 
               <div>
-                <Text weight={500}>Nancy Eggshacker</Text>
+                <Text weight={500}>name</Text>
                 <Text size="xs" color="dimmed">
-                  neggshaker@mantine.dev
+                  email
                 </Text>
               </div>
             </Group>
@@ -75,13 +78,18 @@ export function UserMenu() {
           </Menu.Item>
 
           <Menu.Label>Settings</Menu.Label>
-          <Menu.Item icon={<IconSettings size={14} stroke={1.5} />}>
+          <Menu.Item
+            component="a"
+            href="/dashboard/account"
+            icon={<IconSettings size={14} stroke={1.5} />}
+          >
             Account settings
           </Menu.Item>
-          <Menu.Item icon={<IconSwitchHorizontal size={14} stroke={1.5} />}>
-            Change account
-          </Menu.Item>
-          <Menu.Item icon={<IconLogout size={14} stroke={1.5} />}>
+          <Menu.Item
+            icon={
+              <IconLogout size={14} stroke={1.5} onClick={() => logOut()} />
+            }
+          >
             Logout
           </Menu.Item>
 

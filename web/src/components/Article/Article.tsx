@@ -3,7 +3,7 @@ const Article = ({ article }) => {
   return (
     <article key={article.id} className="p-5">
       <header>
-        <h2 className="font-bold text-slate-900 text-lg">
+        <h2 className="text-lg font-bold text-slate-900">
           <Link to={routes.article({ id: article.id })}>{article.title}</Link>
         </h2>
       </header>

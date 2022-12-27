@@ -174,10 +174,6 @@ export function HeaderMegaMenu() {
     </UnstyledButton>
   ))
 
-  function logIn(): void {
-    throw new Error('Function not implemented.')
-  }
-
   return (
     <Box>
       <Header height={60} px="md">
@@ -274,7 +270,7 @@ export function HeaderMegaMenu() {
                 Dashboard
               </Button>
             ) : (
-              <Button component="a" onClick={() => logIn()} variant="filled">
+              <Button component="a" href="/login" variant="filled">
                 Login
               </Button>
             )}
@@ -350,7 +346,7 @@ export function HeaderMegaMenu() {
                 Dashboard
               </Button>
             ) : (
-              <Button component="a" onClick={() => logIn()} variant="filled">
+              <Button component="a" href="/login" variant="filled">
                 Login
               </Button>
             )}

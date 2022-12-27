@@ -14,7 +14,7 @@ import {
   IconLogout,
 } from '@tabler/icons'
 
-import { login, CurrentUser } from '@redwoodjs/auth'
+import { useAuth } from '@redwoodjs/auth'
 
 import { Logo } from '../Logo/Logo'
 
