@@ -31,24 +31,27 @@
 //     </svg>
 //   )
 // }
-
-import { Image, ThemeIcon } from '@mantine/core'
+import { ThemeIcon } from '@mantine/core'
 import { IconRobot } from '@tabler/icons'
+
+import { Link, routes } from '@redwoodjs/router'
 
 export function Logo({ size }) {
   return (
-    <ThemeIcon
-      size="lg"
-      variant="gradient"
-      gradient={{ from: 'indigo', to: 'cyan' }}
-    >
-      {/* <Image
+    <Link to={routes.home()}>
+      <ThemeIcon
+        size="lg"
+        variant="gradient"
+        gradient={{ from: 'indigo', to: 'cyan' }}
+      >
+        {/* <Image
           radius="md"
           height={20}
           src="img/optimizfx-logo.png"
           alt="OPTIMIZFX.COM"
         /> */}
-      <IconRobot size={size} />
-    </ThemeIcon>
+        <IconRobot size={size} />
+      </ThemeIcon>
+    </Link>
   )
 }

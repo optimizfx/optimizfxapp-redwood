@@ -51,6 +51,16 @@ const useStyles = createStyles((theme) => ({
     },
   },
 
+  subTitle: {
+    color: theme.white,
+    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+    fontWeight: 600,
+    lineHeight: 1.05,
+    maxWidth: 500,
+    fontSize: 35,
+    paddingTop: 10,
+  },
+
   description: {
     color: theme.white,
     opacity: 0.75,
@@ -81,27 +91,38 @@ export function Hero() {
         <div className={classes.inner}>
           <div className={classes.content}>
             <Title className={classes.title}>
-              A{' '}
+              Welcome to{' '}
               <Text
                 component="span"
                 inherit
                 variant="gradient"
-                gradient={{ from: 'pink', to: 'yellow' }}
+                gradient={{ from: 'indigo', to: 'cyan' }}
               >
-                fully featured
+                OPTIMIZFX.COM
               </Text>{' '}
-              React components library
+            </Title>
+            <Title className={classes.subTitle}>
+              Trade Smarter,{' '}
+              <Text
+                component="span"
+                inherit
+                variant="gradient"
+                gradient={{ from: 'indigo', to: 'cyan' }}
+              >
+                Not Harder.
+              </Text>{' '}
             </Title>
 
             <Text className={classes.description} mt={30}>
-              Build fully functional accessible web applications with ease –
-              Mantine includes more than 100 customizable components and hooks
-              to cover you in any situation
+              Welcome to OptimixFX, your one-stop destination for all things
+              related to trading forex and day trading. At OptimixFX, we believe
+              that everyone should have access to the tools and knowledge
+              necessary to succeed in the fast-paced world of forex trading.
             </Text>
 
             <Button
               variant="gradient"
-              gradient={{ from: 'pink', to: 'yellow' }}
+              gradient={{ from: 'indigo', to: 'cyan' }}
               size="xl"
               className={classes.control}
               mt={40}

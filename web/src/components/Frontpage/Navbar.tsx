@@ -31,9 +31,12 @@ import {
   IconChevronDown,
   IconSun,
   IconMoonStars,
+  IconLogout,
+  IconDashboard,
 } from '@tabler/icons'
 
 import { useAuth } from '@redwoodjs/auth'
+import { Link, routes } from '@redwoodjs/router'
 
 import { Logo } from '../Logo/Logo'
 
@@ -178,14 +181,14 @@ export function HeaderMegaMenu() {
     <Box>
       <Header height={60} px="md">
         <Group position="apart" sx={{ height: '100%' }}>
-          <Logo colorScheme={colorScheme} />
+          <Logo size={20} />
 
           <Group
             sx={{ height: '100%' }}
             spacing={0}
             className={classes.hiddenMobile}
           >
-            <a href="#" className={classes.link}>
+            <a href="/" className={classes.link}>
               Home
             </a>
             <HoverCard
@@ -266,23 +269,25 @@ export function HeaderMegaMenu() {
               )}
             </ActionIcon>
             {isAuthenticated ? (
-              <Button component="a" href="/dashboard" variant="default">
-                Dashboard
-              </Button>
+              // <Button component="a" href="/dashboard" variant="default">
+              //   Dashboardddd
+              // </Button>
+              <ActionIcon
+                variant="light"
+                onClick={() => routes.dashboard()}
+                size={36}
+              >
+                <IconDashboard size={16} />
+              </ActionIcon>
             ) : (
               <Button component="a" href="/login" variant="filled">
                 Login
               </Button>
             )}
             {isAuthenticated ? (
-              <Button
-                component="a"
-                onClick={() => logOut()}
-                variant="filled"
-                color="red"
-              >
-                Logout
-              </Button>
+              <ActionIcon variant="light" onClick={() => logOut()} size={36}>
+                <IconLogout size={16} />
+              </ActionIcon>
             ) : (
               <Button component="a" href="/signup" variant="default">
                 Sign up

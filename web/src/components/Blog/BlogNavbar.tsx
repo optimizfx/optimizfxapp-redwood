@@ -1,7 +1,25 @@
 import { useState } from 'react'
 
-import { createStyles, Header, Container, Group, Burger } from '@mantine/core'
+import {
+  createStyles,
+  Header,
+  Container,
+  Group,
+  Burger,
+  Drawer,
+  ScrollArea,
+  Divider,
+  UnstyledButton,
+  Center,
+  Box,
+  Button,
+  Collapse,
+} from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
+import { IconChevronDown } from '@tabler/icons'
+
+import { useAuth } from '@redwoodjs/auth'
+import { routes } from '@redwoodjs/router'
 
 import { Logo } from 'src/components/Logo/Logo'
 
@@ -56,6 +74,17 @@ const useStyles = createStyles((theme) => ({
         .color,
     },
   },
+  hiddenMobile: {
+    [theme.fn.smallerThan('sm')]: {
+      display: 'none',
+    },
+  },
+
+  hiddenDesktop: {
+    [theme.fn.largerThan('sm')]: {
+      display: 'none',
+    },
+  },
 }))
 
 interface HeaderSimpleProps {
@@ -63,9 +92,13 @@ interface HeaderSimpleProps {
 }
 
 export function BlogNavbar({ links }: HeaderSimpleProps) {
-  const [opened, { toggle }] = useDisclosure(false)
+  const { isAuthenticated, logOut } = useAuth()
+  const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
+    useDisclosure(false)
+  // const [opened, { toggle }] = useDisclosure(false)
   const [active, setActive] = useState(links[0].link)
-  const { classes, cx } = useStyles()
+  const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false)
+  const { classes, cx, theme } = useStyles()
 
   const items = links.map((link) => (
     <a
@@ -91,12 +124,106 @@ export function BlogNavbar({ links }: HeaderSimpleProps) {
           {items}
         </Group>
 
+        <Group className={classes.hiddenMobile}>
+          {isAuthenticated ? (
+            <Button component="a" href="/admin/posts/new" variant="filled">
+              Create Post
+            </Button>
+          ) : (
+            ''
+          )}
+          {isAuthenticated ? (
+            <Button
+              component="a"
+              onClick={() => logOut()}
+              variant="filled"
+              color="red"
+            >
+              Logout
+            </Button>
+          ) : (
+            <Button component="a" href="/signup" variant="default">
+              Sign up
+            </Button>
+          )}
+        </Group>
         <Burger
-          opened={opened}
-          onClick={toggle}
-          className={classes.burger}
+          opened={drawerOpened}
+          onClick={toggleDrawer}
+          className={classes.hiddenDesktop}
           size="sm"
         />
+        <Drawer
+          opened={drawerOpened}
+          onClose={closeDrawer}
+          size="100%"
+          padding="md"
+          title="Navigation"
+          className={classes.hiddenDesktop}
+          zIndex={1000000}
+        >
+          <ScrollArea sx={{ height: 'calc(100vh - 60px)' }} mx="-md">
+            <Divider
+              my="sm"
+              color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'}
+            />
+
+            <a href="/" className={classes.link}>
+              Home
+            </a>
+            <UnstyledButton className={classes.link} onClick={toggleLinks}>
+              <Center inline>
+                <Box component="span" mr={5}>
+                  Features
+                </Box>
+                <IconChevronDown size={16} color={theme.fn.primaryColor()} />
+              </Center>
+            </UnstyledButton>
+            <Collapse in={linksOpened}>{links}</Collapse>
+            <a href="#" className={classes.link}>
+              Learn
+            </a>
+            <a href="#" className={classes.link}>
+              Academy
+            </a>
+
+            <Divider
+              my="sm"
+              color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'}
+            />
+
+            <Group position="center" grow pb="xl" px="md">
+              <Button variant="default">Log in</Button>
+              <Button>Sign up</Button>
+              {isAuthenticated ? (
+                <Button
+                  component="a"
+                  onClick={() => routes.articleNew}
+                  variant="filled"
+                  color="red"
+                >
+                  Create Post
+                </Button>
+              ) : (
+                ''
+              )}
+              {isAuthenticated ? (
+                <Button
+                  component="a"
+                  onClick={() => logOut()}
+                  variant="filled"
+                  color="red"
+                >
+                  Logout
+                </Button>
+              ) : (
+                <Button component="a" href="/signup" variant="default">
+                  Sign up
+                </Button>
+              )}
+            </Group>
+          </ScrollArea>
+        </Drawer>
       </Container>
     </Header>
   )

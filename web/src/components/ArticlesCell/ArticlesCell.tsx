@@ -1,3 +1,4 @@
+import { Container, SimpleGrid } from '@mantine/core'
 import type { ArticlesQuery } from 'types/graphql'
 
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
@@ -26,9 +27,15 @@ export const Failure = ({ error }: CellFailureProps) => (
 export const Success = ({ articles }: CellSuccessProps<ArticlesQuery>) => {
   return (
     <>
-      {articles.map((article) => (
-        <Article key={article.id} article={article} />
-      ))}
+      <Container py="xl">
+        <SimpleGrid cols={2} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
+          {/* {articles} */}
+
+          {articles.map((article) => (
+            <Article key={article.id} article={article} />
+          ))}
+        </SimpleGrid>
+      </Container>
     </>
   )
 }
