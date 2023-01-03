@@ -18,6 +18,7 @@ import {
   Collapse,
   ScrollArea,
   ColorScheme,
+  Tooltip,
 } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import { useLocalStorage } from '@mantine/hooks'
@@ -33,6 +34,10 @@ import {
   IconMoonStars,
   IconLogout,
   IconDashboard,
+  IconBrandTelegram,
+  IconBrandYoutube,
+  IconBrandInstagram,
+  IconBrandFacebook,
 } from '@tabler/icons'
 
 import { useAuth } from '@redwoodjs/auth'
@@ -112,13 +117,14 @@ const useStyles = createStyles((theme) => ({
 const mockdata = [
   {
     icon: IconCode,
-    title: 'Open source',
-    description: 'This Pokémon’s cry is very loud and distracting',
+    title: 'What is Forex?',
+    description: 'Learn about forex trading',
+    link: 'what-is-forex',
   },
   {
     icon: IconCoin,
-    title: 'Free for everyone',
-    description: 'The fluid of Smeargle’s tail secretions changes',
+    title: 'How do I Trade?',
+    description: 'Get started trading forex',
   },
   {
     icon: IconBook,
@@ -160,21 +166,23 @@ export function HeaderMegaMenu() {
     setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'))
 
   const links = mockdata.map((item) => (
-    <UnstyledButton className={classes.subLink} key={item.title}>
-      <Group noWrap align="flex-start">
-        <ThemeIcon size={34} variant="default" radius="md">
-          <item.icon size={22} color={theme.fn.primaryColor()} />
-        </ThemeIcon>
-        <div>
-          <Text size="sm" weight={500}>
-            {item.title}
-          </Text>
-          <Text size="xs" color="dimmed">
-            {item.description}
-          </Text>
-        </div>
-      </Group>
-    </UnstyledButton>
+    <Anchor href={item.link} key={item.title}>
+      <UnstyledButton className={classes.subLink}>
+        <Group noWrap align="flex-start">
+          <ThemeIcon size={34} variant="default" radius="md">
+            <item.icon size={22} color={theme.fn.primaryColor()} />
+          </ThemeIcon>
+          <div>
+            <Text size="sm" weight={500}>
+              {item.title}
+            </Text>
+            <Text size="xs" color="dimmed">
+              {item.description}
+            </Text>
+          </div>
+        </Group>
+      </UnstyledButton>
+    </Anchor>
   ))
 
   return (
@@ -202,7 +210,7 @@ export function HeaderMegaMenu() {
                 <a href="#" className={classes.link}>
                   <Center inline>
                     <Box component="span" mr={5}>
-                      Features
+                      Forex
                     </Box>
                     <IconChevronDown
                       size={16}
@@ -214,7 +222,7 @@ export function HeaderMegaMenu() {
 
               <HoverCard.Dropdown sx={{ overflow: 'hidden' }}>
                 <Group position="apart" px="md">
-                  <Text weight={500}>Features</Text>
+                  <Text weight={500}>Forex</Text>
                   <Anchor href="#" size="xs">
                     View all
                   </Anchor>
@@ -257,6 +265,21 @@ export function HeaderMegaMenu() {
           </Group>
 
           <Group className={classes.hiddenMobile}>
+            {/* Socials */}
+            {/* <Group spacing="xs" position="right" noWrap>
+              <ActionIcon size="lg" variant="default" radius="xl">
+                <IconBrandFacebook size={18} stroke={1.5} />
+              </ActionIcon>
+              <ActionIcon size="lg" variant="default" radius="xl">
+                <IconBrandYoutube size={18} stroke={1.5} />
+              </ActionIcon>
+              <ActionIcon size="lg" variant="default" radius="xl">
+                <IconBrandInstagram size={18} stroke={1.5} />
+              </ActionIcon>
+              <ActionIcon size="lg" variant="default" radius="xl">
+                <IconBrandTelegram size={18} stroke={1.5} />
+              </ActionIcon>
+            </Group> */}
             <ActionIcon
               variant="light"
               onClick={() => toggleColorScheme()}
@@ -268,26 +291,29 @@ export function HeaderMegaMenu() {
                 <IconMoonStars size={16} />
               )}
             </ActionIcon>
+
+            {/* Hide the below until after launch and when dashboard is ready */}
             {isAuthenticated ? (
-              // <Button component="a" href="/dashboard" variant="default">
-              //   Dashboardddd
-              // </Button>
-              <ActionIcon
-                variant="light"
-                onClick={() => routes.dashboard()}
-                size={36}
-              >
-                <IconDashboard size={16} />
-              </ActionIcon>
+              <Tooltip label="Dashboard">
+                <ActionIcon
+                  variant="light"
+                  onClick={() => routes.dashboard()}
+                  size={36}
+                >
+                  <IconDashboard size={16} />
+                </ActionIcon>
+              </Tooltip>
             ) : (
               <Button component="a" href="/login" variant="filled">
                 Login
               </Button>
             )}
             {isAuthenticated ? (
-              <ActionIcon variant="light" onClick={() => logOut()} size={36}>
-                <IconLogout size={16} />
-              </ActionIcon>
+              <Tooltip label="Logout">
+                <ActionIcon variant="light" onClick={() => logOut()} size={36}>
+                  <IconLogout size={16} />
+                </ActionIcon>
+              </Tooltip>
             ) : (
               <Button component="a" href="/signup" variant="default">
                 Sign up
