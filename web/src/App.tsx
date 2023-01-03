@@ -20,12 +20,28 @@ function App() {
   // Set color theme state and save to local storage
   const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
     key: 'mantine-color-scheme',
-    defaultValue: 'light',
+    defaultValue: 'dark',
     getInitialValueInEffect: true,
   })
 
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'))
+
+  let colors: {
+    // override dark colors to change them for all components
+    dark: [
+      '#d5d7e0',
+      '#acaebf',
+      '#8c8fa3',
+      '#666980',
+      '#4d4f66',
+      '#34354a',
+      '#2b2c3d',
+      '#1d1e30',
+      '#0c0d21',
+      '#01010a'
+    ]
+  }
 
   const supabaseClient = createClient(
     process.env.SUPABASE_URL,
@@ -38,7 +54,7 @@ function App() {
         toggleColorScheme={toggleColorScheme}
       >
         <MantineProvider
-          theme={{ colorScheme }}
+          theme={{ colorScheme, colors }}
           withGlobalStyles
           withNormalizeCSS
         >
