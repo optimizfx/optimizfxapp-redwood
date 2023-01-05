@@ -30,7 +30,7 @@ function App() {
   let colors: {
     // override dark colors to change them for all components
     dark: [
-      '#d5d7e0',
+      '#ffffff',
       '#acaebf',
       '#8c8fa3',
       '#666980',
