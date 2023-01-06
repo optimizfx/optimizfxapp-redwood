@@ -189,7 +189,10 @@ export function HeaderMegaMenu() {
     <Box>
       <Header height={60} px="md">
         <Group position="apart" sx={{ height: '100%' }}>
-          <Logo size={20} />
+          <Group>
+            <Logo size={20} />
+            <Text fw={700}>OPTIMIZFX.COM</Text>
+          </Group>
 
           <Group
             sx={{ height: '100%' }}
@@ -253,11 +256,8 @@ export function HeaderMegaMenu() {
                 </div>
               </HoverCard.Dropdown>
             </HoverCard>
-            <a href="#" className={classes.link}>
+            <a href="/learn" className={classes.link}>
               Learn
-            </a>
-            <a href="#" className={classes.link}>
-              Academy
             </a>
             <a href="/blog" className={classes.link}>
               Blog
@@ -266,7 +266,7 @@ export function HeaderMegaMenu() {
 
           <Group className={classes.hiddenMobile}>
             {/* Socials */}
-            {/* <Group spacing="xs" position="right" noWrap>
+            <Group spacing="xs" position="right" noWrap>
               <ActionIcon size="lg" variant="default" radius="xl">
                 <IconBrandFacebook size={18} stroke={1.5} />
               </ActionIcon>
@@ -279,7 +279,7 @@ export function HeaderMegaMenu() {
               <ActionIcon size="lg" variant="default" radius="xl">
                 <IconBrandTelegram size={18} stroke={1.5} />
               </ActionIcon>
-            </Group> */}
+            </Group>
             <ActionIcon
               variant="light"
               onClick={() => toggleColorScheme()}
@@ -293,7 +293,7 @@ export function HeaderMegaMenu() {
             </ActionIcon>
 
             {/* Hide the below until after launch and when dashboard is ready */}
-            {isAuthenticated ? (
+            {/* {isAuthenticated ? (
               <Tooltip label="Dashboard">
                 <ActionIcon
                   variant="light"
@@ -318,7 +318,7 @@ export function HeaderMegaMenu() {
               <Button component="a" href="/signup" variant="default">
                 Sign up
               </Button>
-            )}
+            )} */}
           </Group>
 
           <Burger
@@ -356,11 +356,8 @@ export function HeaderMegaMenu() {
             </Center>
           </UnstyledButton>
           <Collapse in={linksOpened}>{links}</Collapse>
-          <a href="#" className={classes.link}>
+          <a href="/learn" className={classes.link}>
             Learn
-          </a>
-          <a href="#" className={classes.link}>
-            Academy
           </a>
           <a href="/blog" className={classes.link}>
             Blog
@@ -371,7 +368,8 @@ export function HeaderMegaMenu() {
             color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'}
           />
 
-          <Group position="center" grow pb="xl" px="md">
+          {/* Commented out for now until login ready */}
+          {/* <Group position="center" grow pb="xl" px="md">
             {isAuthenticated ? (
               <Button component="a" href="/dashboard" variant="default">
                 Dashboard
@@ -395,7 +393,7 @@ export function HeaderMegaMenu() {
                 Sign up
               </Button>
             )}
-          </Group>
+          </Group> */}
         </ScrollArea>
       </Drawer>
     </Box>

@@ -20,6 +20,7 @@ const useStyles = createStyles((theme) => ({
     minHeight: 900,
     backgroundSize: 'cover',
     backgroundImage: 'url(img/daytrader-in-city.png)',
+    height: '100%',
   },
 
   form: {
@@ -29,6 +30,7 @@ const useStyles = createStyles((theme) => ({
     minHeight: 900,
     maxWidth: 450,
     paddingTop: 80,
+    height: '100%',
 
     [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
       maxWidth: '100%',
@@ -85,7 +87,16 @@ const LoginPage = () => {
         >
           Welcome back to Botit
         </Title>
-        <TextInput
+        <div>
+          <input
+            className="inputField"
+            type="email"
+            placeholder="Your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        {/* <TextInput
           label="Email address"
           placeholder="Your email"
           size="md"
@@ -93,14 +104,14 @@ const LoginPage = () => {
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-        />
-        <PasswordInput
+        /> */}
+        {/* <PasswordInput
           label="Password"
           placeholder="Your password"
           mt="md"
           size="md"
-        />
-        <Checkbox label="Keep me logged in" mt="xl" size="md" />
+        /> */}
+        {/* <Checkbox label="Keep me logged in" mt="xl" size="md" /> */}
         <Button
           fullWidth
           mt="xl"

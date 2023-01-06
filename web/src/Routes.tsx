@@ -29,6 +29,8 @@ const Routes = () => {
         <Route path="/about" page={AboutPage} name="about" />
         <Route path="/" page={HomePage} name="home" />
         <Route path="/what-is-forex" page={WhatIsForexPage} name="whatIsForex" />
+        <Route path="/learn" page={LearnPage} name="learn" />
+        <Route notfound page={NotFoundPage} />
       </Set>
       <Private unauthenticated="login">
         <Set wrap={ScaffoldLayout} title="Posts" titleTo="posts" buttonLabel="New Post" buttonTo="newPost">
@@ -69,7 +71,6 @@ const Routes = () => {
           </Private> */}
       </Set>
       {/* </Private> */}
-      <Route notfound page={NotFoundPage} />
     </Router>
   )
 }

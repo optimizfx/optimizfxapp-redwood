@@ -59,7 +59,7 @@ const useStyles = createStyles((theme) => ({
 
 const NotFoundPage = () => {
   const { classes } = useStyles()
-
+  console.log(classes)
   return (
     <Container className={classes.root}>
       <div className={classes.inner}>

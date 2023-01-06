@@ -143,6 +143,7 @@ const useStyles = createStyles((theme) => ({
     minHeight: 900,
     backgroundSize: 'cover',
     backgroundImage: 'url(img/trading-robot.png)',
+    height: '100%',
   },
 
   form: {
@@ -152,6 +153,7 @@ const useStyles = createStyles((theme) => ({
     minHeight: 900,
     maxWidth: 450,
     paddingTop: 80,
+    height: '100%',
 
     [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
       maxWidth: '100%',
@@ -200,11 +202,14 @@ const SignupPage = () => {
     setLoading(true)
     if (response.message) {
       toast(response.message)
+      setLoading(false)
     } else if (response.error) {
       toast.error(response.error)
+      setLoading(false)
     } else {
       // user is signed in automatically
       toast.success('Welcome!')
+      setLoading(false)
     }
   }
 
@@ -247,6 +252,8 @@ const SignupPage = () => {
           placeholder="Your password"
           mt="md"
           size="md"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           visible={visible}
           onVisibilityChange={toggle}
         />
@@ -255,6 +262,8 @@ const SignupPage = () => {
           placeholder="Your password"
           mt="md"
           size="md"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
           visible={visible}
           onVisibilityChange={toggle}
         />
