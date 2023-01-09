@@ -87,7 +87,7 @@ const LoginPage = () => {
         >
           Welcome back to Botit
         </Title>
-        <div>
+        {/* <div>
           <input
             className="inputField"
             type="email"
@@ -95,8 +95,8 @@ const LoginPage = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-        </div>
-        {/* <TextInput
+        </div> */}
+        <TextInput
           label="Email address"
           placeholder="Your email"
           size="md"
@@ -104,7 +104,7 @@ const LoginPage = () => {
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-        /> */}
+        />
         {/* <PasswordInput
           label="Password"
           placeholder="Your password"
