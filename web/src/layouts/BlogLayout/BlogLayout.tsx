@@ -6,8 +6,12 @@ type BlogLayoutProps = {
 
 const blogLinks = [
   {
-    link: '/',
+    link: '/blog',
     label: 'Home',
+  },
+  {
+    link: '/recent',
+    label: 'Recent',
   },
 ]
 
