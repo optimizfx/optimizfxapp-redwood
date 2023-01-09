@@ -44,23 +44,26 @@ interface PostFormProps {
 
 const PostForm = (props: PostFormProps) => {
   const { client: supabase } = useAuth()
-  const [uploading, setUploading] = useState(false)
   const [blogImageUrl, setblogImageUrl] = useState(null)
-  const resetRef = useRef<() => void>(null)
   const onSubmit = (data: FormPost) => {
-
-
-
-
-
-
-
     props.onSave(data, props?.post?.id)
   }
 
+  const content = props.post?.body
+
+  const editor = useEditor({
+    extensions: [
+      StarterKit,
+      Underline,
+      Link,
+      Highlight,
+      TextAlign.configure({ types: ['heading', 'paragraph'] }),
+    ],
+    content,
+  })
+
   return (
     <div className="rw-form-wrapper">
-      {blogImageUrl ? <Image src={blogImageUrl} /> : <div>No image</div>}
       <Form<FormPost> onSubmit={onSubmit} error={props.error}>
         <Flex direction={{ base: 'column' }} gap={{ base: 'lg' }}>
           <TextInput
@@ -68,73 +71,55 @@ const PostForm = (props: PostFormProps) => {
             placeholder="Post Title"
             withAsterisk
             label="Title"
+            value={props.post?.title}
+            required={true}
           />
 
-          {/* <FormError
-          error={props.error}
-          wrapperClassName="rw-form-error-wrapper"
-          titleClassName="rw-form-error-title"
-          listClassName="rw-form-error-list"
-        />
+          <RichTextEditor editor={editor}>
+            <RichTextEditor.Toolbar sticky stickyOffset={60}>
+              <RichTextEditor.ControlsGroup>
+                <RichTextEditor.Bold />
+                <RichTextEditor.Italic />
+                <RichTextEditor.Underline />
+                <RichTextEditor.Strikethrough />
+                <RichTextEditor.ClearFormatting />
+                <RichTextEditor.Highlight />
+                <RichTextEditor.Code />
+              </RichTextEditor.ControlsGroup>
 
-        <Label
-          name="title"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Title
-        </Label>
+              <RichTextEditor.ControlsGroup>
+                <RichTextEditor.H1 />
+                <RichTextEditor.H2 />
+                <RichTextEditor.H3 />
+                <RichTextEditor.H4 />
+              </RichTextEditor.ControlsGroup>
 
-        <TextField
-          name="title"
-          defaultValue={props.post?.title}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-          validation={{ required: true }}
-        />
+              <RichTextEditor.ControlsGroup>
+                <RichTextEditor.Blockquote />
+                <RichTextEditor.Hr />
+                <RichTextEditor.BulletList />
+                <RichTextEditor.OrderedList />
+                <RichTextEditor.Subscript />
+                <RichTextEditor.Superscript />
+              </RichTextEditor.ControlsGroup>
 
-        <FieldError name="title" className="rw-field-error" />
+              <RichTextEditor.ControlsGroup>
+                <RichTextEditor.Link />
+                <RichTextEditor.Unlink />
+              </RichTextEditor.ControlsGroup>
 
-        <Label
-          name="body"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Body
-        </Label>
-
-          <TextField
-            name="body"
-            defaultValue={props.post?.body}
-            className="rw-input"
-            errorClassName="rw-input rw-input-error"
-            validation={{ required: true }}
-          />
-
-
-        <FieldError name="body" className="rw-field-error" />
+              <RichTextEditor.ControlsGroup>
+                <RichTextEditor.AlignLeft />
+                <RichTextEditor.AlignCenter />
+                <RichTextEditor.AlignJustify />
+                <RichTextEditor.AlignRight />
+              </RichTextEditor.ControlsGroup>
+            </RichTextEditor.Toolbar>
 
             <RichTextEditor.Content />
           </RichTextEditor>
-          <>
-            <Group position="left">
-              <FileButton
-                resetRef={resetRef}
-                onChange={uploadBlogImage}
-                accept="image/png,image/jpeg"
-              >
-                {(props) => <Button {...props}>Upload image</Button>}
-              </FileButton>
-              <Button disabled={!blogImageUrl} color="red" onClick={clearFile}>
-                Reset
-              </Button>
-            </Group>
-            {blogImageUrl && (
-              <Text size="sm" align="left" mt="sm">
-                Picked file: {blogImageUrl.name}
-              </Text>
-            )}
-          </>
+
+          <FieldError name="body" className="rw-field-error" />
           <Box
             sx={(theme) => ({
               paddingTop: theme.spacing.sm,
@@ -148,10 +133,10 @@ const PostForm = (props: PostFormProps) => {
         </Flex>
       </Form>
       <PostImageUploader
-        url={avatar_url}
+        url={blogImageUrl}
         size={150}
         onUpload={(url) => {
-          setAvatarUrl(url)
+          setblogImageUrl(url)
           // updateProfile({ username, website, avatar_url: url })
         }}
       />
